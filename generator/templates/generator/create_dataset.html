@@ -1,0 +1,56 @@
+{% extends 'generator/wrapper.html' %}
+{% load static %}
+
+{% block title %}Create DataSet{% endblock %}
+{% block extra_style %}
+    <link type="text/css" rel="stylesheet" href="{% static 'generator/schema_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="container__header">
+        <p class="container__title">Data sets</p>
+        <form method="post">
+            {% csrf_token %}
+            <p>Rows:</p>
+            <input type="number" name="rows" placeholder="5000" required min="1">
+            <button class="btn-create" type="submit">Generate</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in object_list %}
+            <tr>
+                <td>{{ item.pk }}</td>
+                <td>{{ item.created }}</td>
+                <td>
+                    {% if item.status == 'READY' %}
+                        <div class="status ready">
+                            <p>{{ item.get_status_display }}</p>
+                        </div>
+                    {% else %}
+                        <div class="status processing">
+                            <p>{{ item.get_status_display }}</p>
+                        </div>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if item.file %}
+                        <a class="cell-link" href="{{ item.file.url }}">Download</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+</div>

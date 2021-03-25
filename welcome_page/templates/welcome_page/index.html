@@ -1,0 +1,16 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSVFaker</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'welcome_page/style.css' %}">
+</head>
+<body>
+<h3>Welcome to CSVFaker👋</h3>
+<a href="{% url 'generator:schema-list' %}">Generate my data</a>
+</body>
+</html>

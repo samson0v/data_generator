@@ -1,0 +1,90 @@
+{% extends 'generator/wrapper.html' %}
+{% load static %}
+
+{% block title %}Schema Create{% endblock %}
+
+{% block extra_style %}
+    <link type="text/css" rel="stylesheet" href="{% static 'generator/schema_create.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="col-md-4">
+    <form action="" method="post">
+        <h3>Create new schema</h3>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <table class="table">
+            {{ columns.management_form }}
+
+            {% for form in columns.forms %}
+                {% if forloop.first %}
+                    <thead>
+                    <tr>
+                        {% for field in form.visible_fields %}
+                            <th>{{ field.label|capfirst }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                {% endif %}
+                <tr class="{% cycle "row1" "row2" %} formset_row">
+                    {% for field in form.visible_fields %}
+                        <td>
+                            {# Include the hidden fields in the form #}
+                            {% if forloop.first %}
+                                {% for hidden in form.hidden_fields %}
+                                    {{ hidden }}
+                                {% endfor %}
+                            {% endif %}
+                            {{ field.errors.as_ul }}
+                            {{ field }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <input class="save-btn" type="submit" value="Save new schema"/>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'generator/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row').formset({
+        addText: '+ Add column',
+        deleteText: 'Delete',
+        prefix: 'column_set'
+    });
+
+    function set_hidden() {
+        let type_columns = document.querySelectorAll("select");
+        for (let j = 0; j < type_columns.length; j++) {
+            type_columns[j].onclick = function () {
+                let type_columns = document.querySelectorAll("select");
+                for (let i = 0; i < type_columns.length; i++) {
+                    if (type_columns[i].value === 'INTEGER') {
+                        const to = document.querySelector('#id_column_set-' + type_columns[i].id.split('-')[1] + '-start_from');
+                        const from = document.querySelector('#id_column_set-' + type_columns[i].id.split('-')[1] + '-to');
+                        to.removeAttribute('hidden');
+                        from.removeAttribute('hidden');
+                    } else {
+                        const to = document.querySelector('#id_column_set-' + type_columns[i].id.split('-')[1] + '-start_from');
+                        const from = document.querySelector('#id_column_set-' + type_columns[i].id.split('-')[1] + '-to');
+                        to.setAttribute('hidden', 'True');
+                        from.setAttribute('hidden', 'True');
+                    }
+                }
+            };
+        }
+    }
+
+    window.onload = function () {
+        set_hidden();
+    }
+
+    let add_button = document.querySelector(".add-row");
+    add_button.onclick = function () {
+        set_hidden();
+    };
+
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'generator/wrapper.html' %}
+{% load static %}
+
+{% block title %}Schema List{% endblock %}
+
+{% block extra_style %}
+    <link type="text/css" rel="stylesheet" href="{% static 'generator/schema_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="container__header">
+            <p class="container__title">Data schemas</p>
+            <a class="btn-create" href="{% url 'generator:schema-create' %}">+ Create New Schema</a>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Modified</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in object_list %}
+                <tr>
+                    <td>{{ item.pk }}</td>
+                    <td><a class="cell-link" href="{% url 'generator:create-dataset' pk=item.pk %}">{{ item.name }}</a></td>
+                    <td>{{ item.modified|default:"Not modified" }}</td>
+                    <td>
+                        <a class="cell-link" href="{% url 'generator:schema-update' pk=item.pk %}">Edit schema</a>
+                        <a class="delete-link" href="{% url 'generator:schema-delete' pk=item.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <div>
+                    <p>Sorry</p>
+                </div>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

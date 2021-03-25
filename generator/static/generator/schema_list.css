@@ -1,0 +1,77 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container .container__header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.container__header form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.container__header form input{
+    width: 60px;
+    font-size: 16px;
+    padding: 9px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+.btn-create{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: #5CB85C;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+}
+.container .container__header p.container__title{
+    font-size: 24px;
+}
+.container table, td, th {
+  border: 1px solid lightgrey;
+}
+.container table{
+    width: 800px;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+.container th, td{
+   text-align: left;
+    padding: 12px;
+    font-size: 16px;
+}
+.container td a.cell-link{
+    color: #0275D8;
+}
+.container td a.delete-link{
+    color: #D9534F;
+    margin-left: 20px;
+}
+
+.status{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 4px;
+}
+.ready{
+        background: #5CB85C;
+}
+.processing {
+    background: grey;
+}

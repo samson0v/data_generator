@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;400;700&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'generator/style.css' %}">
+    {% block extra_style %}{% endblock %}
+    {% block extra_script %}{% endblock %}
+</head>
+<body>
+<div class="header">
+    <div class="left-container">
+        <p class="left-container__title"><b>FakeCSV</b></p>
+        <a href="{% url 'generator:schema-list' %}">Schemas</a>
+    </div>
+    <div class="right-container">
+        <p class="right-container__user">Hello, <b>{{ user.username }}</b></p>
+        <a href="{% url 'users:logout' %}">Logout</a>
+    </div>
+</div>
+<div class="main">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

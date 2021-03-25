@@ -1,0 +1,17 @@
+{% extends 'users/wrapper.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block form %}
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <p class="form__title"><b>Sign Up</b></p>
+        <input id="id_username" type="text" name="username" placeholder="Username" required>
+        <input id="id_password1" type="password" name="password1" placeholder="Password" required>
+        <input id="id_password2" type="password" name="password2" placeholder="Confirm Password" required>
+        <a class="form__link" href="{% url 'users:login' %}">Already have an account?</a>
+        <div class="form__footer">
+            <button class="form__submit-button" type="submit">Register</button>
+        </div>
+    </form>
+{% endblock %}

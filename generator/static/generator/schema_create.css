@@ -1,0 +1,89 @@
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 38px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+}
+
+form h3 {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+form input, form select {
+    font-size: 16px;
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+}
+
+form label, form thead {
+    display: none;
+}
+
+form .form__schema, form .form__columns {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+form button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #5CB85C;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+.delete-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+#id_name {
+    margin-bottom: 30px;
+    margin-left: 3px;
+}
+
+form .save-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #5cb95b;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 20px;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+.add-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0275D8;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+}

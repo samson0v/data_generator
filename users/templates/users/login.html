@@ -1,0 +1,16 @@
+{% extends 'users/wrapper.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block form %}
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <p class="form__title"><b>Login</b></p>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <a class="form__link" href="{% url 'users:sign-up' %}">Join to FakeCSV</a>
+        <div class="form__footer">
+            <button class="form__submit-button" type="submit">Login</button>
+        </div>
+    </form>
+{% endblock %}

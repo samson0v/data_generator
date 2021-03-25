@@ -1,0 +1,40 @@
+form input{
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+}
+form label{
+    display: none;
+}
+form .form__schema, form .form__columns {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+form button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #5CB85C;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+#add-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0275D8;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+}
